@@ -1,40 +1,20 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
+import paymentRoutes from './routes/payment.js';
 
+dotenv.config();
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy' });
-});
+// Monta as rotas com prefixo /api
+app.use('/api/auth', authRoutes);
+app.use('/api/payment', paymentRoutes);
 
-app.get('/', (req, res) => {
-  res.json({ message: 'AstroMatch API rodando!' });
-});
+app.get('/health', (req, res) => res.json({ status: 'healthy' }));
 
-app.post('/api/astro/generate', (req, res) => {
-  const { birthDate, birthTime, birthCity } = req.body;
-  
-  const mockChart = {
-    sun: { sign: 'Áries', degree: 15 },
-    moon: { sign: 'Leão', degree: 22 },
-    mercury: { sign: 'Touro', degree: 8 },
-    venus: { sign: 'Gêmeos', degree: 12 },
-    mars: { sign: 'Câncer', degree: 5 }
-  };
-  
-  res.json({ 
-    success: true, 
-    chart: mockChart,
-    message: `Mapa astral gerado para ${birthCity}`
-  });
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 AstroMatch rodando na porta ${PORT}`);
-});
-
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Backend rodando na porta ${PORT}`));
