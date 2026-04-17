@@ -1,10 +1,9 @@
-0.5.17{
+{
   "name": "astromatch-backend",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "mkdir -p ephe && curl -o ephe/seas_18.se1 https://www.astro.com/ftp/swisseph/ephe/seas_18.se1 && curl -o ephe/semo_18.se1 https://www.astro.com/ftp/swisseph/ephe/semo_18.se1"
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -21,6 +20,6 @@
     "pg": "^8.11.3",
     "socket.io": "^4.6.1",
     "stripe": "^14.9.0",
-    "swisseph": "^0.5.17"
+    "sweph": "^1.1.0"
   }
 }
