@@ -1,4 +1,4 @@
-{
+0.5.17{
   "name": "astromatch-backend",
   "version": "1.0.0",
   "type": "module",
@@ -21,6 +21,6 @@
     "pg": "^8.11.3",
     "socket.io": "^4.6.1",
     "stripe": "^14.9.0",
-    "swisseph": "^1.2.0"
+    "swisseph": "^0.5.17"
   }
 }
